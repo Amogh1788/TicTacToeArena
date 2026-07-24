@@ -1,17 +1,27 @@
 package ui;
 
+import agstudios.audio.SoundManager;
+import agstudios.utils.ScreenTransition;
+import game.GameManager;
+import game.GameMode;
+import game.GameStats;
+import game.bot.Bot;
+import game.bot.BotDifficulty;
+import game.bot.BotFactory;
+import javafx.animation.PauseTransition;
+import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
-import ui.MainMenu;
-import agstudios.utils.ScreenTransition;
+import javafx.util.Duration;
 import ui.components.GameCell;
-import game.GameManager;
 import ui.components.WinningLine;
-import javafx.geometry.Bounds;
 
 public class GameScreen extends BorderPane {
 
@@ -20,11 +30,37 @@ public class GameScreen extends BorderPane {
     private final GameManager gameManager = new GameManager();
     private final Label turnLabel = new Label("Player X's Turn");
     private final WinningLine winningLine = new WinningLine();
-
+    private final GameMode gameMode;
+    private final Bot bot;
     private boolean gameOver = false;
+    private boolean botThinking = false;
 
-    public GameScreen() {
+    public GameScreen(GameMode gameMode, BotDifficulty difficulty) {
+        this.gameMode = gameMode;
+        GameStats.gamePlayed();
+        if (gameMode == GameMode.BOT) {
 
+            switch (difficulty) {
+
+                case EASY ->
+                        bot = BotFactory.createEasyBot();
+
+                case MEDIUM ->
+                        bot = BotFactory.createMediumBot();
+
+                case IMPOSSIBLE ->
+                        bot = BotFactory.createImpossibleBot();
+
+                default ->
+                        bot = BotFactory.createEasyBot();
+
+            }
+
+        } else {
+
+            bot = null;
+
+        }
         setStyle("-fx-background-color: #050505;");
 
         // Top Label
@@ -55,12 +91,14 @@ public class GameScreen extends BorderPane {
 
                 cell.setOnMouseClicked(e -> {
 
-                    if (gameOver || cell.isOccupied())
+                    if (gameOver || botThinking || cell.isOccupied())
                         return;
 
                     String player = gameManager.getCurrentPlayer();
 
                     gameManager.makeMove(currentRow, currentCol);
+
+                    SoundManager.playSound("place.wav");
 
                     cell.setSymbol(player);
 
@@ -80,6 +118,21 @@ public class GameScreen extends BorderPane {
                         }
                         showWinningLine();
 
+                        SoundManager.playSound("win.wav");
+                        if (gameMode == GameMode.FRIEND) {
+
+                            if (player.equals("X")) {
+                                GameStats.xWon();
+                            } else {
+                                GameStats.oWon();
+                            }
+
+                        } else {
+
+                            GameStats.playerWon();
+
+                        }
+
                         turnLabel.setText("🏆 Player " + player + " Wins!");
 
                         playAgainButton.setVisible(true);
@@ -90,6 +143,13 @@ public class GameScreen extends BorderPane {
                     if (gameManager.isDraw()) {
 
                         gameOver = true;
+                        SoundManager.playSound("tie.wav");
+
+                        if (gameMode == GameMode.FRIEND) {
+                            GameStats.friendDraw();
+                        } else {
+                            GameStats.botDraw();
+                        }
 
                         turnLabel.setText("🤝 It's a Draw!");
                         playAgainButton.setVisible(true);
@@ -100,9 +160,19 @@ public class GameScreen extends BorderPane {
 
                     gameManager.nextTurn();
 
-                    turnLabel.setText(
-                            "Player " + gameManager.getCurrentPlayer() + "'s Turn"
-                    );
+                    if (gameMode == GameMode.BOT) {
+
+                        turnLabel.setText("🤖 Bot is thinking...");
+
+                        makeBotMove();
+
+                    } else {
+
+                        turnLabel.setText(
+                                "Player " + gameManager.getCurrentPlayer() + "'s Turn"
+                        );
+
+                    }
 
                 });
 
@@ -132,6 +202,7 @@ public class GameScreen extends BorderPane {
                 -fx-cursor: hand;
                 """);
         backButton.setOnAction(e -> {
+            SoundManager.playSound("click.wav");
             ScreenTransition.switchScreen(getScene(), new MainMenu());
         });
 
@@ -160,6 +231,7 @@ public class GameScreen extends BorderPane {
             gameManager.reset();
 
             gameOver = false;
+            botThinking = false;
 
             turnLabel.setText("Player X's Turn");
 
@@ -176,6 +248,83 @@ public class GameScreen extends BorderPane {
             playAgainButton.setVisible(false);
             playAgainButton.setManaged(false);
         });
+
+    }
+    private void makeBotMove() {
+
+        if (bot == null || gameOver) {
+            return;
+        }
+        botThinking = true;
+        PauseTransition pause = new PauseTransition(Duration.millis(400));
+
+        pause.setOnFinished(e -> {
+
+            int move = bot.makeMove(gameManager.getBoardState());
+
+            if (move == -1) {
+                botThinking = false;
+                return;
+            }
+
+            int row = move / 3;
+            int col = move % 3;
+
+            gameManager.makeMove(row, col);
+
+            SoundManager.playSound("place.wav");
+
+            cells[row][col].setSymbol("O");
+
+            if (gameManager.checkWinner()) {
+
+                gameOver = true;
+
+                int[][] winners = gameManager.getWinningCells();
+
+                for (int i = 0; i < 3; i++) {
+
+                    cells[winners[i][0]][winners[i][1]].highlightWinner();
+
+                }
+
+                showWinningLine();
+
+                SoundManager.playSound("win.wav");
+
+                GameStats.botWon();
+
+                turnLabel.setText("🤖 Bot Wins!");
+
+                playAgainButton.setVisible(true);
+                playAgainButton.setManaged(true);
+                botThinking = false;
+                return;
+            }
+
+            if (gameManager.isDraw()) {
+
+                gameOver = true;
+
+                SoundManager.playSound("tie.wav");
+                GameStats.botDraw();
+
+                turnLabel.setText("🤝 It's a Draw!");
+
+                playAgainButton.setVisible(true);
+                playAgainButton.setManaged(true);
+                botThinking = false;
+                return;
+            }
+            botThinking = false;
+
+            gameManager.nextTurn();
+
+            turnLabel.setText("Player X's Turn");
+
+        });
+
+        pause.play();
 
     }
     private void showWinningLine() {

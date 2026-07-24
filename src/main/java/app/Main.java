@@ -2,9 +2,9 @@ package app;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import ui.IntroScreen;
-import javafx.scene.paint.Color;
 
 public class Main extends Application {
 
@@ -18,7 +18,15 @@ public class Main extends Application {
 
         stage.setTitle("TicTacToe Arena");
         stage.setScene(scene);
-        stage.setResizable(false);
+        stage.setResizable(true);
+        stage.getIcons().add(
+                new Image(
+                        Main.class.getResourceAsStream(
+                                "/images/tictactoe_arena_icon.png"
+                        )
+                )
+        );
+        stage.setMaximized(true);
         stage.show();
     }
 
