@@ -1,13 +1,13 @@
 package ui.components;
 
+import javafx.animation.Animation;
+import javafx.animation.ScaleTransition;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
-import javafx.animation.ScaleTransition;
-import javafx.animation.Animation;
 import javafx.util.Duration;
 
 public class GameCell extends StackPane {

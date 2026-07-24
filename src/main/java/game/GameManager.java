@@ -21,6 +21,24 @@ public class GameManager {
     public String getCell(int row, int col) {
         return board[row][col];
     }
+    public String[] getBoardState() {
+
+        String[] state = new String[9];
+
+        int index = 0;
+
+        for (int row = 0; row < 3; row++) {
+
+            for (int col = 0; col < 3; col++) {
+
+                state[index++] = board[row][col];
+
+            }
+
+        }
+
+        return state;
+    }
     private void setWinningCells(
             int r1, int c1,
             int r2, int c2,
