@@ -1,0 +1,48 @@
+/* ==========================================================
+   TicTacToe Arena - Global & Component Stylesheet
+   Theme: Dark / Neon Blue Arcade
+   ========================================================== */
+
+.root {
+    -fx-font-family: "Arial", sans-serif;
+}
+
+/* ==========================================================
+   JavaFX Slider Modern Styling
+   ========================================================== */
+
+.slider {
+    -fx-padding: 6px 0px;
+    -fx-cursor: hand;
+}
+
+.slider .track {
+    -fx-background-color: #222222;
+    -fx-background-radius: 6px;
+    -fx-pref-height: 8px;
+    -fx-border-color: #2e2e2e;
+    -fx-border-radius: 6px;
+    -fx-border-width: 1px;
+}
+
+.slider .thumb {
+    -fx-background-color: #1E88E5;
+    -fx-background-radius: 12px;
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
+    -fx-border-color: #ffffff;
+    -fx-border-radius: 12px;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(30, 136, 229, 0.6), 8, 0.4, 0, 0);
+}
+
+.slider .thumb:hover {
+    -fx-background-color: #42A5F5;
+    -fx-effect: dropshadow(three-pass-box, rgba(66, 165, 245, 0.9), 12, 0.5, 0, 0);
+}
+
+.slider:focused .thumb {
+    -fx-background-color: #42A5F5;
+    -fx-effect: dropshadow(three-pass-box, rgba(66, 165, 245, 0.9), 12, 0.5, 0, 0);
+}
