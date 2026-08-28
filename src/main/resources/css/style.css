@@ -1,14 +1,163 @@
 /* ==========================================================
-   TicTacToe Arena - Global & Component Stylesheet
-   Theme: Dark / Neon Blue Arcade
+   TicTacToe Arena - Arcade Visual Redesign Stylesheet
+   Theme: Modern Glowing Glassmorphism / Vibrant Arcade
    ========================================================== */
 
 .root {
-    -fx-font-family: "Arial", sans-serif;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-base: #0c0f17;
+    -fx-background: #080b12;
 }
 
 /* ==========================================================
-   JavaFX Slider Modern Styling
+   Typography & Glows
+   ========================================================== */
+
+.title-glow-cyan {
+    -fx-effect: dropshadow(gaussian, rgba(0, 229, 255, 0.75), 18, 0.4, 0, 0);
+}
+
+.title-glow-gold {
+    -fx-effect: dropshadow(gaussian, rgba(255, 193, 7, 0.8), 20, 0.45, 0, 0);
+}
+
+.title-glow-purple {
+    -fx-effect: dropshadow(gaussian, rgba(171, 71, 188, 0.8), 20, 0.45, 0, 0);
+}
+
+.title-glow-coral {
+    -fx-effect: dropshadow(gaussian, rgba(255, 82, 82, 0.8), 20, 0.45, 0, 0);
+}
+
+/* ==========================================================
+   Glassmorphic Panels & Cards
+   ========================================================== */
+
+.glass-panel {
+    -fx-background-color: rgba(12, 16, 28, 0.82);
+    -fx-background-radius: 26px;
+    -fx-border-color: rgba(255, 255, 255, 0.12);
+    -fx-border-radius: 26px;
+    -fx-border-width: 1.5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.65), 30, 0.2, 0, 10);
+}
+
+.glass-panel-purple {
+    -fx-background-color: rgba(20, 12, 32, 0.85);
+    -fx-background-radius: 26px;
+    -fx-border-color: rgba(171, 71, 188, 0.35);
+    -fx-border-radius: 26px;
+    -fx-border-width: 1.5px;
+    -fx-effect: dropshadow(gaussian, rgba(123, 31, 162, 0.25), 35, 0.25, 0, 8);
+}
+
+.glass-panel-dark {
+    -fx-background-color: rgba(8, 12, 20, 0.88);
+    -fx-background-radius: 24px;
+    -fx-border-color: rgba(255, 255, 255, 0.08);
+    -fx-border-radius: 24px;
+    -fx-border-width: 1.5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 25, 0.2, 0, 8);
+}
+
+.glass-card-interactive {
+    -fx-background-color: rgba(18, 24, 38, 0.75);
+    -fx-background-radius: 18px;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-radius: 18px;
+    -fx-border-width: 1.5px;
+    -fx-cursor: hand;
+}
+
+/* ==========================================================
+   Modern Arcade Menu Buttons
+   ========================================================== */
+
+.menu-btn {
+    -fx-background-color: linear-gradient(to right, rgba(22, 28, 48, 0.88), rgba(28, 36, 62, 0.88));
+    -fx-background-radius: 16px;
+    -fx-border-color: rgba(255, 255, 255, 0.12);
+    -fx-border-radius: 16px;
+    -fx-border-width: 1.5px;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 12px 24px;
+    -fx-alignment: CENTER_LEFT;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 12, 0.1, 0, 4);
+}
+
+.menu-btn:hover {
+    -fx-background-color: linear-gradient(to right, rgba(32, 44, 76, 0.95), rgba(42, 56, 96, 0.95));
+    -fx-border-color: rgba(0, 229, 255, 0.6);
+    -fx-effect: dropshadow(gaussian, rgba(0, 229, 255, 0.35), 18, 0.25, 0, 0);
+}
+
+/* Primary Action Pill Button */
+.btn-pill-primary {
+    -fx-background-color: linear-gradient(to bottom, #00d2ff, #0099ff);
+    -fx-background-radius: 30px;
+    -fx-border-color: rgba(255, 255, 255, 0.4);
+    -fx-border-radius: 30px;
+    -fx-border-width: 1.5px;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 12px 28px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 180, 255, 0.6), 18, 0.35, 0, 4);
+}
+
+.btn-pill-primary:hover {
+    -fx-background-color: linear-gradient(to bottom, #33dcff, #1ab2ff);
+    -fx-effect: dropshadow(gaussian, rgba(0, 220, 255, 0.85), 24, 0.45, 0, 4);
+}
+
+/* Amber/Tie Action Button */
+.btn-pill-amber {
+    -fx-background-color: linear-gradient(to bottom, #ff9800, #f57c00);
+    -fx-background-radius: 30px;
+    -fx-border-color: rgba(255, 255, 255, 0.4);
+    -fx-border-radius: 30px;
+    -fx-border-width: 1.5px;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 12px 28px;
+    -fx-effect: dropshadow(gaussian, rgba(255, 152, 0, 0.6), 18, 0.35, 0, 4);
+}
+
+.btn-pill-amber:hover {
+    -fx-background-color: linear-gradient(to bottom, #ffac33, #fb8c00);
+    -fx-effect: dropshadow(gaussian, rgba(255, 172, 51, 0.85), 24, 0.45, 0, 4);
+}
+
+/* Back / Secondary Pill Button */
+.btn-pill-back {
+    -fx-background-color: rgba(24, 28, 44, 0.85);
+    -fx-background-radius: 30px;
+    -fx-border-color: rgba(255, 255, 255, 0.2);
+    -fx-border-radius: 30px;
+    -fx-border-width: 1.5px;
+    -fx-text-fill: #e0e0e0;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 10px 24px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.1, 0, 2);
+}
+
+.btn-pill-back:hover {
+    -fx-background-color: rgba(40, 48, 72, 0.95);
+    -fx-border-color: rgba(255, 255, 255, 0.45);
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.25), 14, 0.2, 0, 0);
+}
+
+/* ==========================================================
+   Custom Modern Arcade Slider
    ========================================================== */
 
 .slider {
@@ -17,32 +166,164 @@
 }
 
 .slider .track {
-    -fx-background-color: #222222;
-    -fx-background-radius: 6px;
-    -fx-pref-height: 8px;
-    -fx-border-color: #2e2e2e;
-    -fx-border-radius: 6px;
-    -fx-border-width: 1px;
+    -fx-background-color: #121726;
+    -fx-background-radius: 10px;
+    -fx-pref-height: 10px;
+    -fx-border-color: #242c44;
+    -fx-border-radius: 10px;
+    -fx-border-width: 1.5px;
 }
 
 .slider .thumb {
-    -fx-background-color: #1E88E5;
-    -fx-background-radius: 12px;
-    -fx-pref-width: 20px;
-    -fx-pref-height: 20px;
+    -fx-background-color: #00d2ff;
+    -fx-background-radius: 14px;
+    -fx-pref-width: 22px;
+    -fx-pref-height: 22px;
     -fx-border-color: #ffffff;
-    -fx-border-radius: 12px;
-    -fx-border-width: 2px;
+    -fx-border-radius: 14px;
+    -fx-border-width: 2.5px;
     -fx-cursor: hand;
-    -fx-effect: dropshadow(three-pass-box, rgba(30, 136, 229, 0.6), 8, 0.4, 0, 0);
+    -fx-effect: dropshadow(gaussian, rgba(0, 210, 255, 0.7), 12, 0.4, 0, 0);
 }
 
 .slider .thumb:hover {
-    -fx-background-color: #42A5F5;
-    -fx-effect: dropshadow(three-pass-box, rgba(66, 165, 245, 0.9), 12, 0.5, 0, 0);
+    -fx-background-color: #33dcff;
+    -fx-effect: dropshadow(gaussian, rgba(0, 235, 255, 0.95), 18, 0.55, 0, 0);
 }
 
 .slider:focused .thumb {
-    -fx-background-color: #42A5F5;
-    -fx-effect: dropshadow(three-pass-box, rgba(66, 165, 245, 0.9), 12, 0.5, 0, 0);
+    -fx-background-color: #33dcff;
+    -fx-effect: dropshadow(gaussian, rgba(0, 235, 255, 0.95), 18, 0.55, 0, 0);
+}
+
+/* ==========================================================
+   Difficulty Cards
+   ========================================================== */
+
+.diff-card-easy {
+    -fx-background-color: linear-gradient(to right, rgba(16, 38, 26, 0.85), rgba(12, 28, 20, 0.85));
+    -fx-background-radius: 20px;
+    -fx-border-color: rgba(76, 175, 80, 0.4);
+    -fx-border-radius: 20px;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(76, 175, 80, 0.15), 15, 0.15, 0, 4);
+}
+
+.diff-card-easy:hover {
+    -fx-background-color: linear-gradient(to right, rgba(22, 54, 36, 0.92), rgba(16, 40, 28, 0.92));
+    -fx-border-color: #4caf50;
+    -fx-effect: dropshadow(gaussian, rgba(76, 175, 80, 0.5), 25, 0.35, 0, 0);
+}
+
+.diff-card-medium {
+    -fx-background-color: linear-gradient(to right, rgba(42, 34, 14, 0.85), rgba(30, 24, 10, 0.85));
+    -fx-background-radius: 20px;
+    -fx-border-color: rgba(255, 193, 7, 0.4);
+    -fx-border-radius: 20px;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(255, 193, 7, 0.15), 15, 0.15, 0, 4);
+}
+
+.diff-card-medium:hover {
+    -fx-background-color: linear-gradient(to right, rgba(58, 48, 20, 0.92), rgba(42, 34, 14, 0.92));
+    -fx-border-color: #ffc107;
+    -fx-effect: dropshadow(gaussian, rgba(255, 193, 7, 0.5), 25, 0.35, 0, 0);
+}
+
+.diff-card-impossible {
+    -fx-background-color: linear-gradient(to right, rgba(46, 16, 18, 0.85), rgba(34, 12, 14, 0.85));
+    -fx-background-radius: 20px;
+    -fx-border-color: rgba(244, 67, 54, 0.4);
+    -fx-border-radius: 20px;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(244, 67, 54, 0.15), 15, 0.15, 0, 4);
+}
+
+.diff-card-impossible:hover {
+    -fx-background-color: linear-gradient(to right, rgba(64, 22, 26, 0.92), rgba(48, 16, 20, 0.92));
+    -fx-border-color: #f44336;
+    -fx-effect: dropshadow(gaussian, rgba(244, 67, 54, 0.5), 25, 0.35, 0, 0);
+}
+
+/* ==========================================================
+   Player Info Cards (In Game)
+   ========================================================== */
+
+.player-badge-x {
+    -fx-background-color: rgba(10, 24, 42, 0.85);
+    -fx-background-radius: 18px;
+    -fx-border-color: rgba(0, 229, 255, 0.35);
+    -fx-border-radius: 18px;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 229, 255, 0.15), 12, 0.1, 0, 2);
+}
+
+.player-badge-x-active {
+    -fx-background-color: rgba(14, 34, 60, 0.95);
+    -fx-background-radius: 18px;
+    -fx-border-color: #00e5ff;
+    -fx-border-radius: 18px;
+    -fx-border-width: 2.5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 229, 255, 0.65), 24, 0.4, 0, 0);
+}
+
+.player-badge-o {
+    -fx-background-color: rgba(38, 16, 20, 0.85);
+    -fx-background-radius: 18px;
+    -fx-border-color: rgba(255, 82, 82, 0.35);
+    -fx-border-radius: 18px;
+    -fx-border-width: 2px;
+    -fx-effect: dropshadow(gaussian, rgba(255, 82, 82, 0.15), 12, 0.1, 0, 2);
+}
+
+.player-badge-o-active {
+    -fx-background-color: rgba(54, 22, 28, 0.95);
+    -fx-background-radius: 18px;
+    -fx-border-color: #ff5252;
+    -fx-border-radius: 18px;
+    -fx-border-width: 2.5px;
+    -fx-effect: dropshadow(gaussian, rgba(255, 82, 82, 0.65), 24, 0.4, 0, 0);
+}
+
+/* ==========================================================
+   Statistics Cards
+   ========================================================== */
+
+.stat-card-total {
+    -fx-background-color: linear-gradient(to bottom right, rgba(32, 18, 52, 0.85), rgba(20, 10, 36, 0.85));
+    -fx-background-radius: 18px;
+    -fx-border-color: rgba(171, 71, 188, 0.4);
+    -fx-border-radius: 18px;
+    -fx-border-width: 1.8px;
+    -fx-effect: dropshadow(gaussian, rgba(171, 71, 188, 0.2), 16, 0.2, 0, 4);
+}
+
+.stat-card-wins {
+    -fx-background-color: linear-gradient(to bottom right, rgba(46, 36, 12, 0.85), rgba(30, 22, 8, 0.85));
+    -fx-background-radius: 18px;
+    -fx-border-color: rgba(255, 193, 7, 0.4);
+    -fx-border-radius: 18px;
+    -fx-border-width: 1.8px;
+    -fx-effect: dropshadow(gaussian, rgba(255, 193, 7, 0.2), 16, 0.2, 0, 4);
+}
+
+.stat-card-rate {
+    -fx-background-color: linear-gradient(to bottom right, rgba(10, 36, 48, 0.85), rgba(6, 24, 34, 0.85));
+    -fx-background-radius: 18px;
+    -fx-border-color: rgba(0, 229, 255, 0.4);
+    -fx-border-radius: 18px;
+    -fx-border-width: 1.8px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 229, 255, 0.2), 16, 0.2, 0, 4);
+}
+
+.stat-detail-panel {
+    -fx-background-color: rgba(14, 18, 30, 0.85);
+    -fx-background-radius: 18px;
+    -fx-border-color: rgba(255, 255, 255, 0.1);
+    -fx-border-radius: 18px;
+    -fx-border-width: 1.5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 12, 0.1, 0, 3);
 }
