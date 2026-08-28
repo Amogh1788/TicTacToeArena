@@ -51,6 +51,15 @@
     -fx-effect: dropshadow(gaussian, rgba(123, 31, 162, 0.25), 35, 0.25, 0, 8);
 }
 
+.glass-panel-purple-settings {
+    -fx-background-color: rgba(22, 12, 38, 0.68);
+    -fx-background-radius: 18px;
+    -fx-border-color: rgba(186, 104, 200, 0.28);
+    -fx-border-radius: 18px;
+    -fx-border-width: 1.5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.5), 16, 0.15, 0, 4);
+}
+
 .glass-panel-dark {
     -fx-background-color: rgba(8, 12, 20, 0.88);
     -fx-background-radius: 24px;
@@ -134,6 +143,27 @@
     -fx-effect: dropshadow(gaussian, rgba(255, 172, 51, 0.85), 24, 0.45, 0, 4);
 }
 
+/* Purple Settings Pill Button */
+.btn-pill-purple {
+    -fx-background-color: linear-gradient(to right, #6a1b9a, #8e24aa);
+    -fx-background-radius: 30px;
+    -fx-border-color: rgba(225, 190, 231, 0.5);
+    -fx-border-radius: 30px;
+    -fx-border-width: 1.5px;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 10px 28px;
+    -fx-effect: dropshadow(gaussian, rgba(142, 36, 170, 0.6), 16, 0.3, 0, 3);
+}
+
+.btn-pill-purple:hover {
+    -fx-background-color: linear-gradient(to right, #7b1fa2, #ab47bc);
+    -fx-border-color: rgba(255, 255, 255, 0.7);
+    -fx-effect: dropshadow(gaussian, rgba(171, 71, 188, 0.85), 22, 0.45, 0, 3);
+}
+
 /* Back / Secondary Pill Button */
 .btn-pill-back {
     -fx-background-color: rgba(24, 28, 44, 0.85);
@@ -168,17 +198,17 @@
 .slider .track {
     -fx-background-color: #121726;
     -fx-background-radius: 10px;
-    -fx-pref-height: 10px;
+    -fx-pref-height: 8px;
     -fx-border-color: #242c44;
     -fx-border-radius: 10px;
-    -fx-border-width: 1.5px;
+    -fx-border-width: 1px;
 }
 
 .slider .thumb {
     -fx-background-color: #00d2ff;
     -fx-background-radius: 14px;
-    -fx-pref-width: 22px;
-    -fx-pref-height: 22px;
+    -fx-pref-width: 20px;
+    -fx-pref-height: 20px;
     -fx-border-color: #ffffff;
     -fx-border-radius: 14px;
     -fx-border-width: 2.5px;
@@ -191,9 +221,31 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 235, 255, 0.95), 18, 0.55, 0, 0);
 }
 
-.slider:focused .thumb {
-    -fx-background-color: #33dcff;
-    -fx-effect: dropshadow(gaussian, rgba(0, 235, 255, 0.95), 18, 0.55, 0, 0);
+/* Purple Settings Slider */
+.slider-purple .track {
+    -fx-background-color: #24143a;
+    -fx-background-radius: 10px;
+    -fx-pref-height: 7px;
+    -fx-border-color: rgba(186, 104, 200, 0.35);
+    -fx-border-radius: 10px;
+    -fx-border-width: 1px;
+}
+
+.slider-purple .thumb {
+    -fx-background-color: #ba68c8;
+    -fx-background-radius: 14px;
+    -fx-pref-width: 18px;
+    -fx-pref-height: 18px;
+    -fx-border-color: #ffffff;
+    -fx-border-radius: 14px;
+    -fx-border-width: 2px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(186, 104, 200, 0.85), 14, 0.45, 0, 0);
+}
+
+.slider-purple .thumb:hover {
+    -fx-background-color: #ce93d8;
+    -fx-effect: dropshadow(gaussian, rgba(225, 190, 231, 0.95), 18, 0.6, 0, 0);
 }
 
 /* ==========================================================

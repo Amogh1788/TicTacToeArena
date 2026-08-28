@@ -8,20 +8,16 @@ import game.GameStats;
 import game.bot.Bot;
 import game.bot.BotDifficulty;
 import game.bot.BotFactory;
-import javafx.animation.FadeTransition;
 import javafx.animation.PauseTransition;
 import javafx.animation.ScaleTransition;
 import javafx.geometry.Bounds;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
-import javafx.scene.effect.BlurType;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.util.Duration;
@@ -72,7 +68,7 @@ public class GameScreen extends StackPane {
             bot = null;
         }
 
-        // Background
+        // Background - Fixed, persistent background layer
         background = new GameBackground("/images/bg_gameplay.jpg");
         getChildren().add(background);
 
@@ -327,9 +323,6 @@ public class GameScreen extends StackPane {
         tieGlow.setRadius(24);
         statusBanner.setEffect(tieGlow);
 
-        // Transition background to warm golden autumn environment
-        background.transitionToImage("/images/bg_gameplay_autumn.jpg", Duration.millis(500));
-
         primaryActionButton.setText("PLAY AGAIN");
         primaryActionButton.setStyle("""
                 -fx-background-color: linear-gradient(to bottom, #ff9800, #f57c00);
@@ -350,8 +343,8 @@ public class GameScreen extends StackPane {
         gameOver = false;
         botThinking = false;
 
-        background.transitionToImage("/images/bg_gameplay.jpg", Duration.millis(400));
-
+        statusBanner.setScaleX(1.0);
+        statusBanner.setScaleY(1.0);
         statusBanner.setText(gameMode == GameMode.BOT ? "YOUR TURN" : "PLAYER X'S TURN");
         statusBanner.setTextFill(Color.rgb(0, 229, 255));
         DropShadow bannerGlow = new DropShadow();
