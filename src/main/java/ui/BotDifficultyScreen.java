@@ -7,6 +7,7 @@ import game.bot.BotDifficulty;
 import javafx.animation.ScaleTransition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.*;
@@ -21,7 +22,15 @@ import ui.components.GameButton;
 
 public class BotDifficultyScreen extends StackPane {
 
+    private final Parent returnScreen;
+
     public BotDifficultyScreen() {
+        this(null);
+    }
+
+    public BotDifficultyScreen(Parent returnScreen) {
+        this.returnScreen = returnScreen;
+
         // Load stylesheet
         try {
             var css = getClass().getResource("/css/style.css");
@@ -101,7 +110,7 @@ public class BotDifficultyScreen extends StackPane {
         GameButton backBtn = new GameButton("← BACK", GameButton.Variant.BACK);
         backBtn.setOnAction(e -> {
             SoundManager.playSound("click.wav");
-            ScreenTransition.switchScreen(getScene(), new MainMenu());
+            ScreenTransition.switchScreen(getScene(), returnScreen != null ? returnScreen : new MainMenu());
         });
         VBox.setMargin(backBtn, new Insets(10, 0, 0, 0));
 

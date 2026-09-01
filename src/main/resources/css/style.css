@@ -69,6 +69,15 @@
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.7), 25, 0.2, 0, 8);
 }
 
+.board-glass-panel {
+    -fx-background-color: rgba(14, 10, 26, 0.45);
+    -fx-background-radius: 22px;
+    -fx-border-color: rgba(186, 104, 200, 0.20);
+    -fx-border-radius: 22px;
+    -fx-border-width: 1.5px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.50), 20, 0.15, 0, 6);
+}
+
 .glass-card-interactive {
     -fx-background-color: rgba(18, 24, 38, 0.75);
     -fx-background-radius: 18px;
@@ -111,10 +120,10 @@
     -fx-border-radius: 30px;
     -fx-border-width: 1.5px;
     -fx-text-fill: #ffffff;
-    -fx-font-size: 16px;
+    -fx-font-size: 14.5px;
     -fx-font-weight: bold;
     -fx-cursor: hand;
-    -fx-padding: 12px 28px;
+    -fx-padding: 8px 22px;
     -fx-effect: dropshadow(gaussian, rgba(0, 180, 255, 0.6), 18, 0.35, 0, 4);
 }
 
@@ -131,10 +140,10 @@
     -fx-border-radius: 30px;
     -fx-border-width: 1.5px;
     -fx-text-fill: #ffffff;
-    -fx-font-size: 16px;
+    -fx-font-size: 14.5px;
     -fx-font-weight: bold;
     -fx-cursor: hand;
-    -fx-padding: 12px 28px;
+    -fx-padding: 8px 22px;
     -fx-effect: dropshadow(gaussian, rgba(255, 152, 0, 0.6), 18, 0.35, 0, 4);
 }
 
@@ -151,10 +160,10 @@
     -fx-border-radius: 30px;
     -fx-border-width: 1.5px;
     -fx-text-fill: #ffffff;
-    -fx-font-size: 15px;
+    -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-cursor: hand;
-    -fx-padding: 10px 28px;
+    -fx-padding: 8px 22px;
     -fx-effect: dropshadow(gaussian, rgba(142, 36, 170, 0.6), 16, 0.3, 0, 3);
 }
 
@@ -172,10 +181,10 @@
     -fx-border-radius: 30px;
     -fx-border-width: 1.5px;
     -fx-text-fill: #e0e0e0;
-    -fx-font-size: 15px;
+    -fx-font-size: 14px;
     -fx-font-weight: bold;
     -fx-cursor: hand;
-    -fx-padding: 10px 24px;
+    -fx-padding: 8px 18px;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.1, 0, 2);
 }
 

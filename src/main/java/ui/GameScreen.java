@@ -73,10 +73,10 @@ public class GameScreen extends StackPane {
         getChildren().add(background);
 
         // Main Layout Box
-        VBox rootBox = new VBox(20);
+        VBox rootBox = new VBox(18);
         rootBox.setAlignment(Pos.CENTER);
-        rootBox.setPadding(new Insets(20, 20, 20, 20));
-        rootBox.setMaxWidth(600);
+        rootBox.setPadding(new Insets(18, 20, 18, 20));
+        rootBox.setMaxWidth(680);
 
         // ==========================================
         // 1. Header: Player X, VS Badge, Player O
@@ -93,7 +93,7 @@ public class GameScreen extends StackPane {
         HBox headerRow = new HBox(16);
         headerRow.setAlignment(Pos.CENTER);
         headerRow.getChildren().addAll(playerXCard, vsBadge, playerOCard);
-        VBox.setMargin(headerRow, new Insets(0, 0, 8, 0));
+        VBox.setMargin(headerRow, new Insets(0, 0, 4, 0));
 
         // ==========================================
         // 2. 3x3 Game Board Container
@@ -118,25 +118,27 @@ public class GameScreen extends StackPane {
 
         StackPane boardContainer = new StackPane();
         boardContainer.setAlignment(Pos.CENTER);
-        boardContainer.setPadding(new Insets(14));
-        boardContainer.getStyleClass().add("glass-panel-dark");
+        boardContainer.setPadding(new Insets(12));
+        boardContainer.setMaxWidth(Region.USE_PREF_SIZE);
+        boardContainer.setMaxHeight(Region.USE_PREF_SIZE);
+        boardContainer.getStyleClass().add("board-glass-panel");
 
-        winningLine.setPrefSize(420, 420);
-        winningLine.setMaxSize(420, 420);
+        winningLine.setPrefSize(410, 410);
+        winningLine.setMaxSize(410, 410);
         boardContainer.getChildren().addAll(board, winningLine);
 
         // ==========================================
         // 3. Status Banner
         // ==========================================
         statusBanner = new Label(gameMode == GameMode.BOT ? "YOUR TURN" : "PLAYER X'S TURN");
-        statusBanner.setFont(Font.font("Segoe UI", FontWeight.BOLD, 26));
+        statusBanner.setFont(Font.font("Segoe UI", FontWeight.BOLD, 25));
         statusBanner.setTextFill(Color.rgb(0, 229, 255));
         DropShadow bannerGlow = new DropShadow();
         bannerGlow.setColor(Color.rgb(0, 229, 255, 0.7));
         bannerGlow.setRadius(16);
         statusBanner.setEffect(bannerGlow);
 
-        VBox.setMargin(statusBanner, new Insets(6, 0, 6, 0));
+        VBox.setMargin(statusBanner, new Insets(4, 0, 4, 0));
 
         // ==========================================
         // 4. Bottom Action Row
@@ -156,12 +158,22 @@ public class GameScreen extends StackPane {
         GameButton statsBtn = new GameButton("STATS 📊", GameButton.Variant.BACK);
         statsBtn.setOnAction(e -> {
             SoundManager.playSound("click.wav");
-            ScreenTransition.switchScreen(getScene(), new StatisticsScreen());
+            ScreenTransition.switchScreen(getScene(), new StatisticsScreen(this));
         });
 
-        HBox bottomBar = new HBox(15);
+        HBox bottomBar = new HBox(12);
         bottomBar.setAlignment(Pos.CENTER);
-        bottomBar.getChildren().addAll(menuBtn, primaryActionButton, statsBtn);
+
+        if (gameMode == GameMode.BOT) {
+            GameButton changeDiffBtn = new GameButton("CHANGE DIFFICULTY", GameButton.Variant.BACK);
+            changeDiffBtn.setOnAction(e -> {
+                SoundManager.playSound("click.wav");
+                ScreenTransition.switchScreen(getScene(), new BotDifficultyScreen(this));
+            });
+            bottomBar.getChildren().addAll(menuBtn, primaryActionButton, changeDiffBtn, statsBtn);
+        } else {
+            bottomBar.getChildren().addAll(menuBtn, primaryActionButton, statsBtn);
+        }
 
         rootBox.getChildren().addAll(headerRow, boardContainer, statusBanner, bottomBar);
         getChildren().add(rootBox);
@@ -299,10 +311,10 @@ public class GameScreen extends StackPane {
                 -fx-border-radius: 30px;
                 -fx-border-width: 1.5px;
                 -fx-text-fill: white;
-                -fx-font-size: 16px;
+                -fx-font-size: 14.5px;
                 -fx-font-weight: bold;
                 -fx-cursor: hand;
-                -fx-padding: 10px 24px;
+                -fx-padding: 8px 22px;
                 """);
     }
 
@@ -331,10 +343,10 @@ public class GameScreen extends StackPane {
                 -fx-border-radius: 30px;
                 -fx-border-width: 1.5px;
                 -fx-text-fill: white;
-                -fx-font-size: 16px;
+                -fx-font-size: 14.5px;
                 -fx-font-weight: bold;
                 -fx-cursor: hand;
-                -fx-padding: 10px 24px;
+                -fx-padding: 8px 22px;
                 """);
     }
 
@@ -367,10 +379,10 @@ public class GameScreen extends StackPane {
                 -fx-border-radius: 30px;
                 -fx-border-width: 1.5px;
                 -fx-text-fill: white;
-                -fx-font-size: 16px;
+                -fx-font-size: 14.5px;
                 -fx-font-weight: bold;
                 -fx-cursor: hand;
-                -fx-padding: 10px 24px;
+                -fx-padding: 8px 22px;
                 """);
 
         updateActivePlayerVisuals();

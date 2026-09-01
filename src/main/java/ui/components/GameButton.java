@@ -6,7 +6,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -87,11 +86,11 @@ public class GameButton extends Button {
     }
 
     private void applyStyling() {
-        setPrefHeight(54);
-        setMinWidth(Region.USE_COMPUTED_SIZE);
+        setMinWidth(Region.USE_PREF_SIZE);
 
         switch (variant) {
             case MENU_CAPSULE -> {
+                setPrefHeight(54);
                 setPrefWidth(320);
                 setMaxWidth(360);
                 setStyle("""
@@ -115,7 +114,7 @@ public class GameButton extends Button {
                 setEffect(shadow);
             }
             case PRIMARY_CYAN -> {
-                setPrefWidth(220);
+                setPrefHeight(46);
                 setStyle("""
                         -fx-background-color: linear-gradient(to bottom, #00d2ff, #0099ff);
                         -fx-background-radius: 30px;
@@ -123,10 +122,10 @@ public class GameButton extends Button {
                         -fx-border-radius: 30px;
                         -fx-border-width: 1.5px;
                         -fx-text-fill: white;
-                        -fx-font-size: 16px;
+                        -fx-font-size: 14.5px;
                         -fx-font-weight: bold;
                         -fx-cursor: hand;
-                        -fx-padding: 10px 24px;
+                        -fx-padding: 8px 22px;
                         """);
 
                 DropShadow glow = new DropShadow();
@@ -136,7 +135,7 @@ public class GameButton extends Button {
                 setEffect(glow);
             }
             case PRIMARY_AMBER -> {
-                setPrefWidth(220);
+                setPrefHeight(46);
                 setStyle("""
                         -fx-background-color: linear-gradient(to bottom, #ff9800, #f57c00);
                         -fx-background-radius: 30px;
@@ -144,10 +143,10 @@ public class GameButton extends Button {
                         -fx-border-radius: 30px;
                         -fx-border-width: 1.5px;
                         -fx-text-fill: white;
-                        -fx-font-size: 16px;
+                        -fx-font-size: 14.5px;
                         -fx-font-weight: bold;
                         -fx-cursor: hand;
-                        -fx-padding: 10px 24px;
+                        -fx-padding: 8px 22px;
                         """);
 
                 DropShadow glow = new DropShadow();
@@ -157,7 +156,6 @@ public class GameButton extends Button {
                 setEffect(glow);
             }
             case BACK -> {
-                setPrefWidth(160);
                 setPrefHeight(46);
                 setStyle("""
                         -fx-background-color: rgba(24, 28, 44, 0.85);
@@ -166,10 +164,10 @@ public class GameButton extends Button {
                         -fx-border-radius: 30px;
                         -fx-border-width: 1.5px;
                         -fx-text-fill: #e2e8f0;
-                        -fx-font-size: 15px;
+                        -fx-font-size: 14px;
                         -fx-font-weight: bold;
                         -fx-cursor: hand;
-                        -fx-padding: 8px 24px;
+                        -fx-padding: 8px 18px;
                         """);
 
                 DropShadow shadow = new DropShadow();
@@ -179,7 +177,6 @@ public class GameButton extends Button {
                 setEffect(shadow);
             }
             case DANGER -> {
-                setPrefWidth(180);
                 setPrefHeight(46);
                 setStyle("""
                         -fx-background-color: linear-gradient(to bottom, #ef5350, #c62828);
@@ -188,10 +185,10 @@ public class GameButton extends Button {
                         -fx-border-radius: 30px;
                         -fx-border-width: 1.5px;
                         -fx-text-fill: white;
-                        -fx-font-size: 15px;
+                        -fx-font-size: 14px;
                         -fx-font-weight: bold;
                         -fx-cursor: hand;
-                        -fx-padding: 8px 20px;
+                        -fx-padding: 8px 18px;
                         """);
 
                 DropShadow glow = new DropShadow();
@@ -243,10 +240,10 @@ public class GameButton extends Button {
                             -fx-border-radius: 30px;
                             -fx-border-width: 1.5px;
                             -fx-text-fill: white;
-                            -fx-font-size: 16px;
+                            -fx-font-size: 14.5px;
                             -fx-font-weight: bold;
                             -fx-cursor: hand;
-                            -fx-padding: 10px 24px;
+                            -fx-padding: 8px 22px;
                             """);
 
                     DropShadow glow = new DropShadow();
@@ -263,10 +260,10 @@ public class GameButton extends Button {
                             -fx-border-radius: 30px;
                             -fx-border-width: 1.5px;
                             -fx-text-fill: white;
-                            -fx-font-size: 16px;
+                            -fx-font-size: 14.5px;
                             -fx-font-weight: bold;
                             -fx-cursor: hand;
-                            -fx-padding: 10px 24px;
+                            -fx-padding: 8px 22px;
                             """);
 
                     DropShadow glow = new DropShadow();
@@ -283,10 +280,10 @@ public class GameButton extends Button {
                             -fx-border-radius: 30px;
                             -fx-border-width: 1.5px;
                             -fx-text-fill: white;
-                            -fx-font-size: 15px;
+                            -fx-font-size: 14px;
                             -fx-font-weight: bold;
                             -fx-cursor: hand;
-                            -fx-padding: 8px 24px;
+                            -fx-padding: 8px 18px;
                             """);
 
                     DropShadow glow = new DropShadow();
@@ -303,10 +300,10 @@ public class GameButton extends Button {
                             -fx-border-radius: 30px;
                             -fx-border-width: 1.5px;
                             -fx-text-fill: white;
-                            -fx-font-size: 15px;
+                            -fx-font-size: 14px;
                             -fx-font-weight: bold;
                             -fx-cursor: hand;
-                            -fx-padding: 8px 20px;
+                            -fx-padding: 8px 18px;
                             """);
 
                     DropShadow glow = new DropShadow();

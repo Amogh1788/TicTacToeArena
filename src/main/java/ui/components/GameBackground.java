@@ -22,6 +22,7 @@ public class GameBackground extends StackPane {
         imageView.setSmooth(true);
         imageView.setCache(true);
         imageView.setMouseTransparent(true);
+        imageView.setManaged(false);
 
         try {
             var is = getClass().getResourceAsStream(imagePath);
@@ -36,6 +37,7 @@ public class GameBackground extends StackPane {
         // Dark Vignette & Atmospheric Overlay
         vignette = new Rectangle();
         vignette.setMouseTransparent(true);
+        vignette.setManaged(false);
 
         getChildren().addAll(imageView, vignette);
     }
@@ -49,6 +51,8 @@ public class GameBackground extends StackPane {
 
         vignette.setWidth(w);
         vignette.setHeight(h);
+        vignette.setLayoutX(0);
+        vignette.setLayoutY(0);
 
         // Dark edge radial vignette for high UI contrast
         RadialGradient gradient = new RadialGradient(

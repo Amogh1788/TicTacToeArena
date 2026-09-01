@@ -5,6 +5,7 @@ import agstudios.utils.ScreenTransition;
 import game.GameStats;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.*;
@@ -16,7 +17,15 @@ import ui.components.GameButton;
 
 public class StatisticsScreen extends StackPane {
 
+    private final Parent returnScreen;
+
     public StatisticsScreen() {
+        this(null);
+    }
+
+    public StatisticsScreen(Parent returnScreen) {
+        this.returnScreen = returnScreen;
+
         // Load stylesheet
         try {
             var css = getClass().getResource("/css/style.css");
@@ -110,13 +119,13 @@ public class StatisticsScreen extends StackPane {
         resetBtn.setOnAction(e -> {
             SoundManager.playSound("click.wav");
             GameStats.reset();
-            ScreenTransition.switchScreen(getScene(), new StatisticsScreen());
+            ScreenTransition.switchScreen(getScene(), new StatisticsScreen(returnScreen));
         });
 
         GameButton backBtn = new GameButton("← BACK", GameButton.Variant.BACK);
         backBtn.setOnAction(e -> {
             SoundManager.playSound("click.wav");
-            ScreenTransition.switchScreen(getScene(), new MainMenu());
+            ScreenTransition.switchScreen(getScene(), returnScreen != null ? returnScreen : new MainMenu());
         });
 
         HBox buttonBox = new HBox(16);
